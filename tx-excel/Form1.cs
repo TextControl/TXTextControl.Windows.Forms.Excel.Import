@@ -18,9 +18,11 @@ namespace tx_excel
 
         private void btnLoadSheet_Click(object sender, EventArgs e)
         {
+            var availableSheets = LoadSettings.GetDocumentPartNames("pl.xlsx", StreamType.SpreadsheetML);
+
             LoadSettings loadSettings = new LoadSettings()
             {
-                DocumentPartName = "Sheet1"
+                DocumentPartName = availableSheets[0]
             };
 
             textControl1.Load("pl.xlsx", TXTextControl.StreamType.SpreadsheetML, loadSettings);
